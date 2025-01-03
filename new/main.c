@@ -26,6 +26,7 @@ char    **ft_read(int fd, char *filename)
         file[i++] = get_next_line(fd);
     return (file);
 }
+
 void draw_line(int **tab, int lines, int columns)
 {
     void *mlx_connection = mlx_init();

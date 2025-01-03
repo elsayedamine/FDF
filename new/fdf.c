@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   fdf.c                                              :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: aelsayed <aelsayed@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/01/03 23:15:02 by aelsayed          #+#    #+#             */
+/*   Updated: 2025/01/03 23:15:03 by aelsayed         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "fdf.h"
 
 int	key_hook(int keycode, t_vars *vars)
@@ -9,6 +21,7 @@ int	key_hook(int keycode, t_vars *vars)
     }
     return (0);
 }
+
 int	mouse_hook(int keycode, t_vars *vars)
 {
 	printf("the mouse key { %d }!\n", keycode);
@@ -40,7 +53,7 @@ char    **ft_read(int fd, char *filename)
     return (file);
 }
 
-void draw_line_segment(void *mlx, void *win, t_vec coord)
+void    parametric_drawing(void *mlx, void *win, t_vec coord)
 {
     float   t;
     int     i = 0;
@@ -50,8 +63,8 @@ void draw_line_segment(void *mlx, void *win, t_vec coord)
     while (i <= steps)
     {
         t = (float)i / steps; // Vary t from 0 to 1
-        x = coord.X0 + t * (coord.X1 - coord.X0);
-        y = coord.Y0 + t * (coord.Y1 - coord.Y0);
+        x = coord.x0 + t * (coord.x1 - coord.x0);
+        y = coord.y0 + t * (coord.y1 - coord.y0);
         mlx_pixel_put(mlx, win, (int)round(x), (int)round(y), coord.c);
         i++;
     }
@@ -76,28 +89,28 @@ void draw_line(t_vec *var, int lines, int columns)
     while (j < lines) {
         int i = 0;
         while (i < columns) {
-            int X0 = x_offset + (i * scalex - j * scaley) * cos(M_PI / 4.5);
-            int Y0 = y_offset + (i * scalex + j * scaley) * sin(M_PI / 4.5) - (var->tab[j][i] * height_scale);
+            int x_0 = x_offset + (i * scalex - j * scaley) * cos(M_PI / 4.5);
+            int y_0 = y_offset + (i * scalex + j * scaley) * sin(M_PI / 4.5) - (var->tab[j][i] * height_scale);
             coord.c = var->color[j][i];
             if (i + 1 < columns)
             {
-                int X1 = x_offset + ((i + 1) * scalex - j * scaley) * cos(M_PI / 4.5);
-                int Y1 = y_offset + ((i + 1) * scalex + j * scaley) * sin(M_PI / 4.5) - (var->tab[j][i + 1] * height_scale);
-                coord.X0 = X0;
-                coord.Y0 = Y0;
-                coord.X1 = X1;
-                coord.Y1 = Y1;
-                draw_line_segment(vars.mlx, vars.win, coord);
+                int x_1 = x_offset + ((i + 1) * scalex - j * scaley) * cos(M_PI / 4.5);
+                int y_1 = y_offset + ((i + 1) * scalex + j * scaley) * sin(M_PI / 4.5) - (var->tab[j][i + 1] * height_scale);
+                coord.x0 = x_0;
+                coord.y0 = y_0;
+                coord.x1 = x_1;
+                coord.y1 = y_1;
+                parametric_drawing(vars.mlx, vars.win, coord);
             }
             if (j + 1 < lines)
             {
-                int X1 = x_offset + (i * scalex - (j + 1) * scaley) * cos(M_PI / 4.5);
-                int Y1 = y_offset + (i * scalex + (j + 1) * scaley) * sin(M_PI / 4.5) - (var->tab[j + 1][i] * height_scale);
-                coord.X0 = X0;
-                coord.Y0 = Y0;
-                coord.X1 = X1;
-                coord.Y1 = Y1;
-                draw_line_segment(vars.mlx, vars.win, coord);
+                int x_1 = x_offset + (i * scalex - (j + 1) * scaley) * cos(M_PI / 4.5);
+                int y_1 = y_offset + (i * scalex + (j + 1) * scaley) * sin(M_PI / 4.5) - (var->tab[j + 1][i] * height_scale);
+                coord.x0 = x_0;
+                coord.y0 = y_0;
+                coord.x1 = x_1;
+                coord.y1 = y_1;
+                parametric_drawing(vars.mlx, vars.win, coord);
             }
             i++;
         }
