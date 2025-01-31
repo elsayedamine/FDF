@@ -107,8 +107,10 @@ void			draw(t_all *var);
 void			draw_shape_rot(t_all *var, int flag);
 void			draw_shape(t_all *var, int flag);
 void			draw_parallel(t_all *var, int flag);
-void			draw_line_segment(t_window *window, t_vec crd);
+void			draw_line_segment(t_window *window, t_vec crd, t_all *var);
 void			fill_scale(t_scl *scale);
+void			zoom(t_all *var, float x, char c);
+
 
 // hook functions
 void			put_on_window(t_all *var);

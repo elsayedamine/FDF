@@ -19,22 +19,24 @@ void	fill_scale(t_scl *scale)
 	scale->z = 2;
 	scale->x_offset = M_WIDTH * 450 / 1000;
 	scale->y_offset = M_HEIGHT * 250 / 1000;
+	scale->rot = 0;
 }
 
-void	zoom(t_scl *scale, float x, char c)
+void	zoom(t_all *var, float x, char c)
 {
 	if (c == '*')
 	{
-		scale->x *= (1 + x);
-		scale->y *= (1 + x);
-		scale->z *= (1 + x);
+		var->scale.x *= (1 + x);
+		var->scale.y *= (1 + x);
+		var->scale.z *= (1 + x);
 	}
-	else if (c == '/' && scale->x > 1 && scale->y > 1)
+	else if (c == '/' && var->scale.x > 1 && var->scale.y > 1)
 	{
-		scale->x /= (1 + x);
-		scale->y /= (1 + x);
-		scale->z /= (1 + x);
+		var->scale.x /= (1 + x);
+		var->scale.y /= (1 + x);
+		var->scale.z /= (1 + x);
 	}
+	draw(var);
 }
 
 void	iskey(t_all *var, int key)
@@ -59,10 +61,9 @@ int	keyhook(int key, t_all *var)
 	if (key == 65451 || key == 65453)
 	{
 		if (key == 65451)
-			zoom(&var->scale, 0.2, '*');
+			zoom(var, 0.2, '*');
 		if (key == 65453)
-			zoom(&var->scale, 0.2, '/');
-		draw(var);
+			zoom(var, 0.2, '/');
 	}
 	if (ft_strchr_index("cxzpi", key) != -1)
 		iskey(var, key);

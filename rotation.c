@@ -39,7 +39,7 @@ void	get_crd_colomns_rot(t_all *strct, int i, int j, float theta_z)
 	strct->crd.y0 = strct->scale.y_offset + rot.y0 * sin(M_PI / 4.77) - rot.z0;
 	strct->crd.x1 = strct->scale.x_offset + rot.x1 * cos(M_PI / 4.77);
 	strct->crd.y1 = strct->scale.y_offset + rot.y1 * sin(M_PI / 4.77) - rot.z1;
-	draw_line_segment(&strct->win, strct->crd);
+	draw_line_segment(&strct->win, strct->crd, strct);
 }
 
 void	get_crd_lines_rot(t_all *strct, int i, int j, float theta_z)
@@ -58,7 +58,7 @@ void	get_crd_lines_rot(t_all *strct, int i, int j, float theta_z)
 	strct->crd.y0 = strct->scale.y_offset + rot.y0 * sin(M_PI / 4.77) - rot.z0;
 	strct->crd.x1 = strct->scale.x_offset + rot.x1 * cos(M_PI / 4.77);
 	strct->crd.y1 = strct->scale.y_offset + rot.y1 * sin(M_PI / 4.77) - rot.z1;
-	draw_line_segment(&strct->win, strct->crd);
+	draw_line_segment(&strct->win, strct->crd, strct);
 }
 
 void	draw_shape_rot(t_all *var, int flag)
@@ -77,9 +77,9 @@ void	draw_shape_rot(t_all *var, int flag)
 		{
 			var->crd.c = var->crd.color[j][i];
 			if (i + 1 < var->crd.columns)
-				get_crd_colomns_rot(var, i, j, 5 + var->scale.rot);
+				get_crd_colomns_rot(var, i, j, 5 * var->scale.rot);
 			if (j + 1 < var->crd.lines)
-				get_crd_lines_rot(var, i, j, 5 + var->scale.rot);
+				get_crd_lines_rot(var, i, j, 5 *  var->scale.rot);
 			i++;
 		}
 		j++;

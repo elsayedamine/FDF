@@ -12,7 +12,7 @@
 
 #include "fdf.h"
 
-void	draw_line_segment(t_window *window, t_vec crd)
+void	draw_line_segment(t_window *window, t_vec crd, t_all *var)
 {
 	int		i;
 	float	x;
@@ -26,6 +26,8 @@ void	draw_line_segment(t_window *window, t_vec crd)
 	{
 		x = crd.x0 + (float)i / steps * (crd.x1 - crd.x0);
 		y = crd.y0 + (float)i / steps * (crd.y1 - crd.y0);
+		while (crd.x1 > M_WIDTH || crd.y0 > M_HEIGHT)
+			zoom(var, 1, '/');
 		if (x >= 0 && x < window->line_length / 4 && y >= 0 && y < M_HEIGHT)
 		{
 			dst = window->addr + ((int)y * window->line_length + (int)x
@@ -48,7 +50,7 @@ void	get_crd_colomns(t_all *strct, int i, int j)
 	strct->crd.y1 = strct->scale.y_offset + ((i + 1) * strct->scale.x + j
 			* strct->scale.y) * sin(M_PI / 4.77) - (strct->crd.tab[j][i + 1]
 			* strct->scale.z);
-	draw_line_segment(&strct->win, strct->crd);
+	draw_line_segment(&strct->win, strct->crd, strct);
 }
 
 void	get_crd_lines(t_all *strct, int i, int j)
@@ -63,7 +65,7 @@ void	get_crd_lines(t_all *strct, int i, int j)
 	strct->crd.y1 = strct->scale.y_offset + (i * strct->scale.x + (j + 1)
 			* strct->scale.y) * sin(M_PI / 4.77) - (strct->crd.tab[j + 1][i]
 			* strct->scale.z);
-	draw_line_segment(&strct->win, strct->crd);
+	draw_line_segment(&strct->win, strct->crd, strct);
 }
 
 void	draw_shape(t_all *var, int flag)
