@@ -12,6 +12,7 @@ sources = \
 		events/mouse.c \
 		window.c \
 		draw/draw_shape.c \
+		draw/draw_line.c \
 		draw/draw_parallel.c \
 		draw/rotation.c \
 		menu/info.c \

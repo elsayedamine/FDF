@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   keys.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sayed <sayed@student.42.fr>                +#+  +:+       +#+        */
+/*   By: aelsayed <aelsayed@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/14 23:01:33 by aelsayed          #+#    #+#             */
-/*   Updated: 2025/02/06 16:37:43 by sayed            ###   ########.fr       */
+/*   Updated: 2025/02/06 19:07:50 by aelsayed         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,12 +46,12 @@ void	iskey(t_all *var, int key)
 		var->scale.proj = 'p';
 	if (key == 'i')
 		var->scale.proj = 'i';
-	if (key == ' ')
-		fill_scale(&var->scale);
 	if (key == 'z')
 		var->scale.z += 1;
 	if (key == 'x')
 		var->scale.z -= 1;
+	if (key == ' ')
+		fill_scale(&var->scale);
 	draw(var);
 }
 
@@ -67,7 +67,7 @@ int	keyhook(int key, t_all *var)
 			zoom(&var->scale, 0.2, '/');
 		draw(var);
 	}
-	if (ft_strchr_index("cxzpi", key) != -1)
+	if (ft_strchr_index("cxzpi ", key) != -1)
 		iskey(var, key);
 	if (key == 'l' || key == 'r')
 	{

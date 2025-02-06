@@ -12,6 +12,21 @@
 
 #include "../fdf.h"
 
+int	valid_arg(char *s)
+{
+	int	l;
+
+	l = ft_strlen(s) - 1;
+	if (l + 1 >= 5)
+	{
+		if (!ft_strncmp(&s[l - 3], ".fdf", 4))
+			return (1);
+		else
+			return (0);
+	}
+	return (0);
+}
+
 void	fr(int **tab, int **col, char ***split)
 {
 	if (tab)

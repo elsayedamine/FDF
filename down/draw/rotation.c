@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   rotation.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sayed <sayed@student.42.fr>                +#+  +:+       +#+        */
+/*   By: aelsayed <aelsayed@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/21 15:57:53 by aelsayed          #+#    #+#             */
-/*   Updated: 2025/02/06 16:04:23 by sayed            ###   ########.fr       */
+/*   Updated: 2025/02/06 19:24:37 by aelsayed         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../fdf.h"
 
-void	rotate_point_z(float *x, float *y, float theta_z)
+void	rotate_z(float *x, float *y, float theta_z)
 {
 	float	rad_z;
 	float	temp_x;
@@ -33,8 +33,8 @@ void	get_crd_colomns_rot(t_all *strct, int i, int j, float theta_z)
 	rot.x1 = (i + 1) * strct->scale.x - j * strct->scale.y;
 	rot.y1 = (i + 1) * strct->scale.x + j * strct->scale.y;
 	rot.z1 = strct->crd.tab[j][i + 1] * strct->scale.z;
-	rotate_point_z(&rot.x0, &rot.y0, theta_z);
-	rotate_point_z(&rot.x1, &rot.y1, theta_z);
+	rotate_z(&rot.x0, &rot.y0, theta_z);
+	rotate_z(&rot.x1, &rot.y1, theta_z);
 	strct->crd.x0 = strct->scale.x_offset + rot.x0 * cos(M_PI / 6);
 	strct->crd.y0 = strct->scale.y_offset + rot.y0 * sin(M_PI / 6) - rot.z0;
 	strct->crd.x1 = strct->scale.x_offset + rot.x1 * cos(M_PI / 6);
@@ -53,8 +53,8 @@ void	get_crd_lines_rot(t_all *strct, int i, int j, float theta_z)
 	rot.x1 = i * strct->scale.x - (j + 1) * strct->scale.y;
 	rot.y1 = i * strct->scale.x + (j + 1) * strct->scale.y;
 	rot.z1 = strct->crd.tab[j + 1][i] * strct->scale.z;
-	rotate_point_z(&rot.x0, &rot.y0, theta_z);
-	rotate_point_z(&rot.x1, &rot.y1, theta_z);
+	rotate_z(&rot.x0, &rot.y0, theta_z);
+	rotate_z(&rot.x1, &rot.y1, theta_z);
 	strct->crd.x0 = strct->scale.x_offset + rot.x0 * cos(M_PI / 6);
 	strct->crd.y0 = strct->scale.y_offset + rot.y0 * sin(M_PI / 6) - rot.z0;
 	strct->crd.x1 = strct->scale.x_offset + rot.x1 * cos(M_PI / 6);

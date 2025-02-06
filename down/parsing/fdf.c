@@ -12,21 +12,6 @@
 
 #include "../fdf.h"
 
-int	mycmp(char *s)
-{
-	int	l;
-
-	l = ft_strlen(s) - 1;
-	if (l + 1 >= 5)
-	{
-		if (!ft_strncmp(&s[l - 3], ".fdf", 4))
-			return (1);
-		else
-			return (0);
-	}
-	return (0);
-}
-
 int	main(int ac, char **av)
 {
 	int		fd;
@@ -34,7 +19,7 @@ int	main(int ac, char **av)
 	t_all	vars;
 
 	i = 0;
-	if (ac == 2 && mycmp(av[1]))
+	if (ac == 2 && valid_arg(av[1]))
 	{
 		fd = open(av[1], O_RDONLY);
 		if (fd == -1)

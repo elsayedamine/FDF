@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   menu.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sayed <sayed@student.42.fr>                +#+  +:+       +#+        */
+/*   By: aelsayed <aelsayed@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/02 02:21:27 by sayed             #+#    #+#             */
-/*   Updated: 2025/02/06 03:56:21 by sayed            ###   ########.fr       */
+/*   Updated: 2025/02/06 19:29:10 by aelsayed         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ void	paint_menu(t_all *var)
 		{
 			dst = var->menu.addr + (j * var->menu.line_length + i
 					* (var->menu.bits_per_pixel / 8));
-			*(unsigned int *)dst = 0x0d0d0d;
+			*(unsigned int *)dst = get_color(0x868686, 0x5c5c5c, (i + j) * 3);
 			i++;
 		}
 		j++;
@@ -49,6 +49,11 @@ void	menu(t_all *var)
 	paint_menu(var);
 	mlx_put_image_to_window(var->win.mlx, var->win.win, var->menu.img, 0, 0);
 	while (i < 5)
-		rectangle(var, 50 + (40 * i++), 0xdc143c);
+		fill_rectangle(var, M_WIDTH / 6.5, 50 + (40 * i++), 75);
+	i = 0;
+	while (i < 5)
+		fill_rectangle(var, 15, 50 + (40 * i++), 115);
+	fill_rectangle(var, M_WIDTH / 12 - 27, 1, 120);
+	fill_square(var, 15, M_HEIGHT / 4 - 10);
 	put_info_on_menu(var);
 }

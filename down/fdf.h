@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   fdf.h                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sayed <sayed@student.42.fr>                +#+  +:+       +#+        */
+/*   By: aelsayed <aelsayed@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/08 18:15:20 by kali              #+#    #+#             */
-/*   Updated: 2025/02/06 16:41:37 by sayed            ###   ########.fr       */
+/*   Updated: 2025/02/06 19:26:39 by aelsayed         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 # include "./LIBFT/libft.h"
 # include <X11/X.h>
 # include <X11/keysym.h>
-// # include <mlx.h>
+# include <mlx.h>
 # include <math.h>
 # define M_PI 3.14159265358979323846
 # define M_WIDTH 1920
@@ -112,36 +112,47 @@ typedef struct s_rot
 
 typedef struct s_color
 {
-    int    r;
-    int    g;
-    int    b;
-    int    r2;
-    int    g2;
-    int    b2;
-    int    r_interp;
-    int    g_interp;
-    int    b_interp;
-}            t_color;
+	int			r;
+	int			g;
+	int			b;
+	int			r2;
+	int			g2;
+	int			b2;
+	int			r_interp;
+	int			g_interp;
+	int			b_interp;
+}				t_color;
 
+// parsing functions
+int				valid_arg(char *s);
 void			feed_tab(char **file, int lines, t_all *vars);
-
-// line functions
 int				ft_color(const char *s);
+
+// drawing functions
 void			draw(t_all *var);
 void			draw_shape_rot(t_all *var, int flag);
 void			draw_shape(t_all *var, int flag);
 void			draw_parallel(t_all *var, int flag);
 void			draw_line_segment(t_window *window, t_vec crd);
+unsigned int	get_color(unsigned int start, unsigned int end, float t);
 void			fill_scale(t_scl *scale);
+void			zoom(t_scl *scale, float x, char c);
+
+// menu functions
+void			fill_square(t_all *var, int x_offset, int y_offset);
+void			fill_rectangle(t_all *var, int x_offset, int y_offset, int len);
+void			menu(t_all *vars);
 void			put_info_on_menu(t_all *var);
-// hook functions
 void			rectangle(t_all *var, int offset, int color);
+void			fill_rectangle(t_all *var, int x_offset, \
+					int y_offset, int color);
+
+// hook functions
 int				keyhook(int keycode, t_all *var);
 int				ft_close(t_all *var);
 void			fr(int **tab, int **col, char ***split);
 void			initialisation(t_all *var, int flag);
 void			hook_manipulation(t_all *var);
-void			menu(t_all *vars);
 
 // mouse functions
 int				mouse_press(int button, int x, int y, t_all *var);
