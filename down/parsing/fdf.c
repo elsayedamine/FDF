@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   fdf.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sayed <sayed@student.42.fr>                +#+  +:+       +#+        */
+/*   By: aelsayed <aelsayed@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/07 22:45:31 by kali              #+#    #+#             */
-/*   Updated: 2025/02/06 03:37:05 by sayed            ###   ########.fr       */
+/*   Updated: 2025/02/07 15:35:00 by aelsayed         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,10 @@ int	main(int ac, char **av)
 		if (fd == -1)
 			return (perror("Failed to open file"), 1);
 		vars.file = ft_read(fd, av[1]);
-		if (!vars.file)
-			return (close(fd), perror("Failed to read file"), 1);
+		if (!vars.file || !*vars.file || \
+			!**vars.file || **vars.file == '\n')
+			return (close(fd), write(2, \
+				"Failed to read file or No data found\n", 37), 1);
 		while (vars.file[i])
 			i++;
 		feed_tab(vars.file, i, &vars);
