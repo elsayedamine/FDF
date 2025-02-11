@@ -6,11 +6,11 @@
 /*   By: aelsayed <aelsayed@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/08 17:45:25 by kali              #+#    #+#             */
-/*   Updated: 2025/02/06 18:56:15 by aelsayed         ###   ########.fr       */
+/*   Updated: 2025/02/10 16:13:07 by aelsayed         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../fdf.h"
+#include "fdf.h"
 
 void	get_crd_colomns(t_all *strct, int i, int j)
 {
@@ -25,7 +25,7 @@ void	get_crd_colomns(t_all *strct, int i, int j)
 			* strct->scale.y) * sin(M_PI / 6) - (strct->crd.tab[j][i + 1]
 			* strct->scale.z);
 	strct->crd.c_end = strct->crd.color[j][i + 1];
-	draw_line_segment(&strct->win, strct->crd);
+	draw_line_segment(strct, strct->crd);
 }
 
 void	get_crd_lines(t_all *strct, int i, int j)
@@ -41,7 +41,7 @@ void	get_crd_lines(t_all *strct, int i, int j)
 			* strct->scale.y) * sin(M_PI / 6) - (strct->crd.tab[j + 1][i]
 			* strct->scale.z);
 	strct->crd.c_end = strct->crd.color[j + 1][i];
-	draw_line_segment(&strct->win, strct->crd);
+	draw_line_segment(strct, strct->crd);
 }
 
 void	draw_shape(t_all *var, int flag)
@@ -68,5 +68,6 @@ void	draw_shape(t_all *var, int flag)
 		}
 		j++;
 	}
+	var->flag = 1;
 	hook_manipulation(var);
 }

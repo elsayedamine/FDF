@@ -6,11 +6,11 @@
 /*   By: aelsayed <aelsayed@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/02 02:21:27 by sayed             #+#    #+#             */
-/*   Updated: 2025/02/06 19:29:10 by aelsayed         ###   ########.fr       */
+/*   Updated: 2025/02/10 13:30:08 by aelsayed         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../fdf.h"
+#include "fdf.h"
 
 void	paint_menu(t_all *var)
 {
@@ -26,7 +26,7 @@ void	paint_menu(t_all *var)
 		{
 			dst = var->menu.addr + (j * var->menu.line_length + i
 					* (var->menu.bits_per_pixel / 8));
-			*(unsigned int *)dst = get_color(0x868686, 0x5c5c5c, (i + j) * 3);
+			*(unsigned int *)dst = get_color(0x868686, 0x696969, (i + j) * 3);
 			i++;
 		}
 		j++;

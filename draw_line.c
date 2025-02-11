@@ -6,11 +6,11 @@
 /*   By: aelsayed <aelsayed@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/06 17:27:32 by aelsayed          #+#    #+#             */
-/*   Updated: 2025/02/06 19:28:18 by aelsayed         ###   ########.fr       */
+/*   Updated: 2025/02/10 16:19:36 by aelsayed         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../fdf.h"
+#include "fdf.h"
 
 unsigned int	get_color(unsigned int start, unsigned int end, float t)
 {
@@ -29,7 +29,7 @@ unsigned int	get_color(unsigned int start, unsigned int end, float t)
 		((color.g_interp & 0xFF) << 8) | (color.b_interp & 0xFF));
 }
 
-void	draw_line_segment(t_window *window, t_vec crd)
+void	draw_line_segment(t_all *var, t_vec crd)
 {
 	int		i;
 	float	x;
@@ -39,15 +39,17 @@ void	draw_line_segment(t_window *window, t_vec crd)
 
 	i = 0;
 	steps = 500;
+	while ((crd.x1 > M_WIDTH || crd.y1 > M_HEIGHT) && !var->flag)
+		zoom(var, 0.6, '/');
 	while (i <= steps)
 	{
 		x = crd.x0 + (float)i / steps * (crd.x1 - crd.x0);
 		y = crd.y0 + (float)i / steps * (crd.y1 - crd.y0);
-		if (x >= 0 && x < M_WIDTH && x < window->line_length / 4 && \
+		if (x >= 0 && x < M_WIDTH && x < var->win.line_length / 4 && \
 			y >= 0 && y < M_HEIGHT)
 		{
-			dst = window->addr + ((int)y * window->line_length + (int)x
-					* (window->bits_per_pixel / 8));
+			dst = var->win.addr + ((int)y * var->win.line_length + (int)x
+					* (var->win.bits_per_pixel / 8));
 			*(unsigned int *)dst = get_color(crd.c, crd.c_end, \
 				(float)i / steps);
 		}

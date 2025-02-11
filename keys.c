@@ -6,11 +6,11 @@
 /*   By: aelsayed <aelsayed@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/14 23:01:33 by aelsayed          #+#    #+#             */
-/*   Updated: 2025/02/06 19:07:50 by aelsayed         ###   ########.fr       */
+/*   Updated: 2025/02/10 14:38:52 by aelsayed         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../fdf.h"
+#include "fdf.h"
 
 void	fill_scale(t_scl *scale)
 {
@@ -22,22 +22,23 @@ void	fill_scale(t_scl *scale)
 	scale->rot = 0;
 }
 
-void	zoom(t_scl *scale, float x, char c)
+void	zoom(t_all *var, float x, char c)
 {
-	if (c == '*' && scale->z < 100)
+	if (c == '*' && var->scale.z < 100 && var->scale.x < 1000)
 	{
-		scale->x *= (1 + x);
-		scale->y *= (1 + x);
-		scale->z *= (1 + x);
-		scale->zoom++;
+		var->scale.x *= (1 + x);
+		var->scale.y *= (1 + x);
+		var->scale.z *= (1 + x);
+		var->scale.zoom++;
 	}
-	else if (c == '/' && scale->x > 1 && scale->y > 1)
+	else if (c == '/' && var->scale.x > 1 && var->scale.y > 1)
 	{
-		scale->x /= (1 + x);
-		scale->y /= (1 + x);
-		scale->z /= (1 + x);
-		scale->zoom--;
+		var->scale.x /= (1 + x);
+		var->scale.y /= (1 + x);
+		var->scale.z /= (1 + x);
+		var->scale.zoom--;
 	}
+	draw(var);
 }
 
 void	iskey(t_all *var, int key)
@@ -62,10 +63,9 @@ int	keyhook(int key, t_all *var)
 	if (key == '-' || key == '=')
 	{
 		if (key == '=')
-			zoom(&var->scale, 0.2, '*');
+			zoom(var, 0.2, '*');
 		if (key == '-')
-			zoom(&var->scale, 0.2, '/');
-		draw(var);
+			zoom(var, 0.2, '/');
 	}
 	if (ft_strchr_index("cxzpi ", key) != -1)
 		iskey(var, key);

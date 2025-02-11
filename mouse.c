@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   mouse.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sayed <sayed@student.42.fr>                +#+  +:+       +#+        */
+/*   By: aelsayed <aelsayed@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/18 20:03:14 by aelsayed          #+#    #+#             */
-/*   Updated: 2025/02/06 01:51:17 by sayed            ###   ########.fr       */
+/*   Updated: 2025/02/10 13:30:12 by aelsayed         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../fdf.h"
+#include "fdf.h"
 
 int	mouse_press(int button, int x, int y, t_all *var)
 {

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   window.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sayed <sayed@student.42.fr>                +#+  +:+       +#+        */
+/*   By: aelsayed <aelsayed@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/08 17:56:37 by kali              #+#    #+#             */
-/*   Updated: 2025/02/06 03:56:28 by sayed            ###   ########.fr       */
+/*   Updated: 2025/02/10 16:19:08 by aelsayed         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,7 @@ void	set_to_0(t_all *var)
 	var->scale.rot = 0;
 	var->scale.zoom = 0;
 	var->menu.img = 0;
+	var->flag = 0;
 }
 
 void	initialisation(t_all *var, int flag)

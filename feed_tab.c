@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   feed_tab.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sayed <sayed@student.42.fr>                +#+  +:+       +#+        */
+/*   By: aelsayed <aelsayed@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/12 16:34:33 by aelsayed          #+#    #+#             */
-/*   Updated: 2025/02/06 01:51:31 by sayed            ###   ########.fr       */
+/*   Updated: 2025/02/10 13:29:51 by aelsayed         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../fdf.h"
+#include "fdf.h"
 
 int	valid_arg(char *s)
 {

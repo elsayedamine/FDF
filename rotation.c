@@ -6,11 +6,11 @@
 /*   By: aelsayed <aelsayed@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/21 15:57:53 by aelsayed          #+#    #+#             */
-/*   Updated: 2025/02/06 19:24:37 by aelsayed         ###   ########.fr       */
+/*   Updated: 2025/02/10 14:19:41 by aelsayed         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../fdf.h"
+#include "fdf.h"
 
 void	rotate_z(float *x, float *y, float theta_z)
 {
@@ -40,7 +40,7 @@ void	get_crd_colomns_rot(t_all *strct, int i, int j, float theta_z)
 	strct->crd.x1 = strct->scale.x_offset + rot.x1 * cos(M_PI / 6);
 	strct->crd.y1 = strct->scale.y_offset + rot.y1 * sin(M_PI / 6) - rot.z1;
 	strct->crd.c_end = strct->crd.color[j][i + 1];
-	draw_line_segment(&strct->win, strct->crd);
+	draw_line_segment(strct, strct->crd);
 }
 
 void	get_crd_lines_rot(t_all *strct, int i, int j, float theta_z)
@@ -60,7 +60,7 @@ void	get_crd_lines_rot(t_all *strct, int i, int j, float theta_z)
 	strct->crd.x1 = strct->scale.x_offset + rot.x1 * cos(M_PI / 6);
 	strct->crd.y1 = strct->scale.y_offset + rot.y1 * sin(M_PI / 6) - rot.z1;
 	strct->crd.c_end = strct->crd.color[j + 1][i];
-	draw_line_segment(&strct->win, strct->crd);
+	draw_line_segment(strct, strct->crd);
 }
 
 void	draw_shape_rot(t_all *var, int flag)
