@@ -6,7 +6,7 @@
 /*   By: aelsayed <aelsayed@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/07 22:45:31 by kali              #+#    #+#             */
-/*   Updated: 2025/02/10 13:29:30 by aelsayed         ###   ########.fr       */
+/*   Updated: 2025/02/12 22:26:54 by aelsayed         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ int	main(int ac, char **av)
 		vars.file = ft_read(fd, av[1]);
 		if (!vars.file || !*vars.file || \
 			!**vars.file || **vars.file == '\n')
-			return (close(fd), write(2, \
+			return (close(fd), ft_free("2", vars.file), write(2, \
 				"Failed to read file or No data found\n", 37), 1);
 		while (vars.file[i])
 			i++;

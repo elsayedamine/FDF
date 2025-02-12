@@ -6,7 +6,7 @@
 /*   By: aelsayed <aelsayed@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/19 16:14:10 by aelsayed          #+#    #+#             */
-/*   Updated: 2025/02/10 14:19:14 by aelsayed         ###   ########.fr       */
+/*   Updated: 2025/02/10 13:29:42 by aelsayed         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void	get_crd_colomns_p(t_all *strct, int i, int j)
 	strct->crd.x1 = strct->scale.x_offset + ((i + 1) * strct->scale.x);
 	strct->crd.y1 = strct->scale.y_offset + (j * strct->scale.y);
 	strct->crd.c_end = strct->crd.color[j][i + 1];
-	draw_line_segment(strct, strct->crd);
+	draw_line_segment(&strct->win, strct->crd);
 }
 
 void	get_crd_lines_p(t_all *strct, int i, int j)
@@ -29,7 +29,7 @@ void	get_crd_lines_p(t_all *strct, int i, int j)
 	strct->crd.x1 = strct->scale.x_offset + (i * strct->scale.x);
 	strct->crd.y1 = strct->scale.y_offset + ((j + 1) * strct->scale.y);
 	strct->crd.c_end = strct->crd.color[j + 1][i];
-	draw_line_segment(strct, strct->crd);
+	draw_line_segment(&strct->win, strct->crd);
 }
 
 void	draw_parallel(t_all *var, int flag)

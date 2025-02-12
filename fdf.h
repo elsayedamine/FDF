@@ -6,7 +6,7 @@
 /*   By: aelsayed <aelsayed@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/08 18:15:20 by kali              #+#    #+#             */
-/*   Updated: 2025/02/10 15:10:37 by aelsayed         ###   ########.fr       */
+/*   Updated: 2025/02/10 22:36:39 by aelsayed         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,7 +81,6 @@ typedef struct s_all
 	t_window	win;
 	t_menu		menu;
 	char		**file;
-	int		flag;
 }				t_all;
 
 typedef struct s_info
@@ -134,11 +133,11 @@ void			draw(t_all *var);
 void			draw_shape_rot(t_all *var, int flag);
 void			draw_shape(t_all *var, int flag);
 void			draw_parallel(t_all *var, int flag);
-void			draw_line_segment(t_all *var, t_vec crd);
+void			draw_line_segment(t_window *window, t_vec crd);
 unsigned int	get_color(unsigned int start, unsigned int end, float t);
 void			fill_scale(t_scl *scale);
-void			zoom(t_all *var, float x, char c);
-void			fit_to_screen(t_all *var);
+void			zoom(t_scl *scale, float x, char c);
+
 // menu functions
 void			fill_square(t_all *var, int x_offset, int y_offset);
 void			fill_rectangle(t_all *var, int x_offset, int y_offset, int len);

@@ -39,13 +39,5 @@ fclean: clean
 
 re: fclean all
 
-flush: re clean
-	make clean -C $(LIB_DIR)
-	rm -rf $(object)
-
-f: $(object)
-	$(CC) $(CFLAGS) $(object) ./LIBFT/libft.a -lmlx -lXext -lX11 -lm -o $(NAME)
-	make clean && clear
-
 .SECONDARY: $(object)
 .PHONY: clean fclean re all
