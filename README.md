@@ -19,7 +19,7 @@ What starts as a matrix of numbers becomes a living, breathing terrain in motion
 ✅ Keyboard controls for:
   - Rotation
   - Scaling
-  - Height adjustment  
+  - Height adjustment
 ✅ Real-time refresh on user interaction  
 ✅ Clean pixel-perfect rendering  
 ✅ Robust handling of malformed map files  
