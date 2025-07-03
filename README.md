@@ -16,17 +16,16 @@ What starts as a matrix of numbers becomes a living, breathing terrain in motion
 ✅ Smooth zoom in/out using keyboard keys  
 ✅ Mouse-based navigation  
 ✅ Dynamic color gradients based on map values or user preferences  
-✅ Keyboard controls for:
-  - Rotation
-  - Scaling
-  - Height adjustment
 ✅ Real-time refresh on user interaction  
 ✅ Clean pixel-perfect rendering  
 ✅ Robust handling of malformed map files  
 ✅ **Interactive mini-menu** on the showing:
   - Current `x-offset`, `y-offset`, `z-height`
   - Zoom level, scale factor, rotation angle
-  - User guide menu with instructions for keyboard and mouse controls
+  - User guide menu with instructions for keyboard and mouse controls for :
+  - Rotation,
+  - Scaling,
+  - Height adjustment;
 
 ---
 
