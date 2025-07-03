@@ -74,7 +74,7 @@ git clone https://github.com/elsayedamine/FDF.git
 cd FDF
 make
 ./fdf test_maps/42.fdf
-
+```
 ---
 
 ## ❤️ Dedication
