@@ -6,11 +6,11 @@
 /*   By: aelsayed <aelsayed@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/08 17:45:25 by kali              #+#    #+#             */
-/*   Updated: 2025/02/10 22:36:37 by aelsayed         ###   ########.fr       */
+/*   Updated: 2025/10/24 19:52:18 by aelsayed         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fdf.h"
+#include "../fdf.h"
 
 void	get_crd_colomns(t_all *strct, int i, int j)
 {

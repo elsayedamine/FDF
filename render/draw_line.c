@@ -6,11 +6,11 @@
 /*   By: aelsayed <aelsayed@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/06 17:27:32 by aelsayed          #+#    #+#             */
-/*   Updated: 2025/02/10 22:36:36 by aelsayed         ###   ########.fr       */
+/*   Updated: 2025/10/24 19:52:18 by aelsayed         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fdf.h"
+#include "../fdf.h"
 
 unsigned int	get_color(unsigned int start, unsigned int end, float t)
 {

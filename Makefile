@@ -5,19 +5,19 @@ LIB_DIR = ./LIBFT
 lib = $(LIB_DIR)/libft.a
 
 sources = \
-		fdf.c \
-		ft_color.c \
-		feed_tab.c \
-		keys.c \
-		mouse.c \
-		window.c \
-		draw_shape.c \
-		draw_line.c \
-		draw_parallel.c \
-		rotation.c \
-		info.c \
-		menu.c \
-		rectangle.c
+		main.c \
+		parsing/ft_color.c \
+		parsing/feed_tab.c \
+		window/keys.c \
+		window/mouse.c \
+		window/window.c \
+		render/draw_shape.c \
+		render/draw_line.c \
+		render/draw_parallel.c \
+		render/rotation.c \
+		render/info.c \
+		render/menu.c \
+		render/rectangle.c
 
 object = $(sources:.c=.o)
 

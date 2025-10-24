@@ -6,11 +6,11 @@
 /*   By: aelsayed <aelsayed@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/02 02:21:27 by sayed             #+#    #+#             */
-/*   Updated: 2025/02/10 13:30:08 by aelsayed         ###   ########.fr       */
+/*   Updated: 2025/10/24 19:52:18 by aelsayed         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fdf.h"
+#include "../fdf.h"
 
 void	paint_menu(t_all *var)
 {
